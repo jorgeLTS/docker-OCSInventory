@@ -6,7 +6,7 @@ services:
     container_name : ocsinventory-server
     restart: always
     ports:
-      - 9009:80
+      - 80:80
       - 443:443
     volumes:
       - "./perlcomdata:/etc/ocsinventory-server"
@@ -14,6 +14,7 @@ services:
       - "./varlibdata:/var/lib/ocsinventory-reports"
       - "./httpdconfdata:/etc/httpd/conf.d"
       - "./conf/php.ini:/etc/opt/remi/php73/php.ini"
+      - "./conf/httpd.conf:/etc/httpd/conf/httpd.conf"
     environment:
       OCS_DB_SERVER: ocsinventory-db
       OCS_DB_USER: ocsuser
@@ -48,10 +49,3 @@ services:
 networks:
   localocs:
 
-volumes:
-  perlcomdata:
-  ocsreportsdata:
-  varlibdata:
-  httpdconfdata:
-  sqldata:
-  
